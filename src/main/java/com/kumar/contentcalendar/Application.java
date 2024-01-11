@@ -1,6 +1,7 @@
 package com.kumar.contentcalendar;
 
 import com.kumar.contentcalendar.example.MyFirstClass;
+import com.kumar.contentcalendar.example.MyFirstService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,12 +24,15 @@ public class Application {
 
         // spring create object or bean
 //        final MyFirstClass myFirstClass = context.getBean("wrongMyFirstClass",MyFirstClass.class);
-        final MyFirstClass myFirstClass = context.getBean("myBean",MyFirstClass.class);
-        System.out.println(myFirstClass.sayHello());
+//        final MyFirstClass myFirstClass = context.getBean("myBean",MyFirstClass.class);
+//        System.out.println(myFirstClass.sayHello());
+
+        MyFirstService myFirstService = context.getBean(MyFirstService.class);
+        System.out.println(myFirstService.tellAStory());
     }
 
     //	@Bean
     public MyFirstClass myFirstClass() {
-        return new MyFirstClass();
+        return new MyFirstClass("First Bean");
     }
 }

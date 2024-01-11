@@ -1,11 +1,15 @@
 package com.kumar.contentcalendar.example;
 
-import org.springframework.stereotype.Component;
-
 //@Component
 public class MyFirstClass {
 
+    private String myvar;
+
+    public MyFirstClass(String myvar) {
+        this.myvar = myvar;
+    }
+
     public String sayHello(){
-        return "Hello from the MyFirstClass";
+        return "Hello from the MyFirstClass ==> myVar = " + myvar;
     }
 }
