@@ -8,12 +8,18 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Collections;
+
 @SpringBootApplication
 @Slf4j
 public class Application {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
+        var app =new SpringApplication(Application.class);
+        app.setDefaultProperties(Collections.singletonMap("spring.profiles.active", "test"));
+        var context = app.run(args);
+
+//        ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
 //		Arrays.stream(context.getBeanDefinitionNames()).forEach(System.out::println);
         RestTemplate restTemplate = (RestTemplate) context.getBean("restTemplate");
 //		System.out.println(restTemplate);
